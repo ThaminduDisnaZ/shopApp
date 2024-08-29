@@ -123,11 +123,17 @@ public class SignIn extends javax.swing.JFrame {
         String email = jTextField1.getText();
         String password = String.valueOf(jPasswordField1.getPassword());
 
+        email.matches("");
+        
+        
         if (email.isEmpty()) {
          
             JOptionPane.showMessageDialog(this, "Please Enter Your Email", "Warning", JOptionPane.WARNING_MESSAGE);
        
-        } else if (password.isEmpty()) {
+        }else if(email.matches("^(.+)@(\\\\S+)$")){
+     JOptionPane.showMessageDialog(this, "Please Enter ", "Warning", JOptionPane.WARNING_MESSAGE);
+    
+    } else if (password.isEmpty()) {
         
             JOptionPane.showMessageDialog(this, "Please Enter Your Password", "Warning", JOptionPane.WARNING_MESSAGE);
        
