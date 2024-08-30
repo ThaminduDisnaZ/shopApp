@@ -395,7 +395,9 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       reset();
+     
+         jTextField2.setEditable(true);
+        reset();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -405,6 +407,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         
         String email = String.valueOf(jTable1.getValueAt(row, 0));
         jTextField2.setText(email);
+        jTextField2.setEditable(false);
         
          String firstName = String.valueOf(jTable1.getValueAt(row, 1));
         jTextField3.setText(firstName);
