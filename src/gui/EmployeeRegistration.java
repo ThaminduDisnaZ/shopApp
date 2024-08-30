@@ -361,17 +361,17 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             } else {
 
                 ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE  `nic` = '" + nic + "' OR `mobile`='" + mobile + "'");
- boolean canUpdate = false;
+                boolean canUpdate = false;
                 if (resultSet.next()) {
 
                     if (!resultSet.getString("email").equals(email)) {
                         JOptionPane.showMessageDialog(this, "This Mobile Number or NIC Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
                     } else {
-                      canUpdate = true;
+                        canUpdate = true;
                     }
 
                 } else {
- canUpdate = true;
+                    canUpdate = true;
                 }
 
                 if (canUpdate) {
@@ -430,8 +430,6 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             } else {
 
                 ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `email` = '" + email + "' OR  `nic` = '" + nic + "' OR `mobile`='" + mobile + "'");
-                
-               
 
                 if (resultSet.next()) {
                     JOptionPane.showMessageDialog(this, "This user already registered", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -490,6 +488,18 @@ public class EmployeeRegistration extends javax.swing.JFrame {
 
         String type = String.valueOf(jTable1.getValueAt(row, 7));
         jComboBox2.setSelectedItem(type);
+        
+        
+        if (evt.getClickCount() == 2) {
+            
+            
+            int row1 = jTable1.getSelectedRow();
+            String email1 = String.valueOf(jTable1.getValueAt(row1, 0));
+            
+            
+            AddressView addressView = new AddressView(email1);
+            addressView.setVisible(true);
+        }
 
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -546,6 +556,8 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jPasswordField1.setText("");
         jComboBox1.setSelectedIndex(0);
         jComboBox2.setSelectedIndex(0);
+
+        jTextField2.setEditable(true);
 
     }
 }
