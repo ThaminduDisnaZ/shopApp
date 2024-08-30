@@ -329,7 +329,67 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            String email = jTextField2.getText();
+            String firstName = jTextField3.getText();
+            String lastName = jTextField4.getText();
+            String nic = jTextField5.getText();
+            String mobile = jTextField6.getText();
+            String password = String.valueOf(jPasswordField1.getPassword());
+            String gender = String.valueOf(jComboBox1.getSelectedItem());
+            String type = String.valueOf(jComboBox2.getSelectedItem());
+
+            if (firstName.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter your first name", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (lastName.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter your last name", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (nic.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter your nic", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (mobile.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter your mobile", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (!mobile.matches("^07[01245678]{1}[0-9]{7}$")) {
+                JOptionPane.showMessageDialog(this, "Please enter valid mobile", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (password.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter your password", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (!password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")) {
+                JOptionPane.showMessageDialog(this, "Please enter minimum eight characters, at least one letter and one number", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (gender.equals("Select")) {
+                JOptionPane.showMessageDialog(this, "Please select a gender", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (type.equals("Select")) {
+                JOptionPane.showMessageDialog(this, "Please select a type", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+
+                ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE  `nic` = '" + nic + "' OR `mobile`='" + mobile + "'");
+ boolean canUpdate = false;
+                if (resultSet.next()) {
+
+                    if (!resultSet.getString("email").equals(email)) {
+                        JOptionPane.showMessageDialog(this, "This Mobile Number or NIC Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                      canUpdate = true;
+                    }
+
+                } else {
+ canUpdate = true;
+                }
+
+                if (canUpdate) {
+
+                    MySQL2.executeIUD("UPDATE `employee` SET `password` = '" + password + "' , `first_name`= '" + firstName + "', `last_name` = '" + lastName + "', "
+                            + " `nic` = '" + nic + "', `mobile` = '" + mobile + "' ,"
+                            + " `employee_type_id` = '" + employeeTypeMap.get(type) + "' , `gender_id` = '" + employeeGenderMap.get(gender) + "' "
+                            + "WHERE `email` = '" + email + "' ");
+
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -370,6 +430,8 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             } else {
 
                 ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `email` = '" + email + "' OR  `nic` = '" + nic + "' OR `mobile`='" + mobile + "'");
+                
+               
 
                 if (resultSet.next()) {
                     JOptionPane.showMessageDialog(this, "This user already registered", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -395,41 +457,40 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-     
-         jTextField2.setEditable(true);
+
+        jTextField2.setEditable(true);
         reset();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
-        
+
         int row = jTable1.getSelectedRow();
-        
+
         String email = String.valueOf(jTable1.getValueAt(row, 0));
         jTextField2.setText(email);
         jTextField2.setEditable(false);
-        
-         String firstName = String.valueOf(jTable1.getValueAt(row, 1));
+
+        String firstName = String.valueOf(jTable1.getValueAt(row, 1));
         jTextField3.setText(firstName);
-        
-         String lastName = String.valueOf(jTable1.getValueAt(row, 2));
+
+        String lastName = String.valueOf(jTable1.getValueAt(row, 2));
         jTextField4.setText(lastName);
-        
-         String nic = String.valueOf(jTable1.getValueAt(row, 3));
+
+        String nic = String.valueOf(jTable1.getValueAt(row, 3));
         jTextField5.setText(nic);
-        
-         String mobile = String.valueOf(jTable1.getValueAt(row, 4));
+
+        String mobile = String.valueOf(jTable1.getValueAt(row, 4));
         jTextField6.setText(mobile);
-        
-         String password = String.valueOf(jTable1.getValueAt(row, 5));
+
+        String password = String.valueOf(jTable1.getValueAt(row, 5));
         jPasswordField1.setText(password);
-        
-         String gender = String.valueOf(jTable1.getValueAt(row, 6));
+
+        String gender = String.valueOf(jTable1.getValueAt(row, 6));
         jComboBox1.setSelectedItem(gender);
-        
-         String type = String.valueOf(jTable1.getValueAt(row, 7));
+
+        String type = String.valueOf(jTable1.getValueAt(row, 7));
         jComboBox2.setSelectedItem(type);
-        
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
