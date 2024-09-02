@@ -507,7 +507,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             int row1 = jTable1.getSelectedRow();
             String email1 = String.valueOf(jTable1.getValueAt(row1, 0));
 
-            AddressView addressView = new AddressView(email1);
+            AddressView addressView = new AddressView(this,true,email1);
             addressView.setVisible(true);
 
         }
