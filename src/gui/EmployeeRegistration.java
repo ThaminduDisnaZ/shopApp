@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
@@ -15,10 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Vishwa
- */
+
 public class EmployeeRegistration extends javax.swing.JFrame {
 
     private static HashMap<String, String> employeeTypeMap = new HashMap<>();
@@ -159,10 +152,23 @@ public class EmployeeRegistration extends javax.swing.JFrame {
 
         jLabel9.setText("Type");
 
+        jTextField2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+
+        jTextField3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+
+        jTextField4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+
+        jTextField5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+
+        jTextField6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+
+        jComboBox1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jComboBox2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jButton1.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jButton1.setText("Create Account");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +176,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jButton2.setText("Update Account");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +184,9 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+
+        jButton3.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
         jButton3.setText("Clear All");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +267,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,6 +276,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jTable1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -303,8 +314,8 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -321,7 +332,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         pack();
@@ -329,9 +340,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
         try {
-            String email = jTextField2.getText();
             String firstName = jTextField3.getText();
             String lastName = jTextField4.getText();
             String nic = jTextField5.getText();
@@ -339,6 +348,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             String password = String.valueOf(jPasswordField1.getPassword());
             String gender = String.valueOf(jComboBox1.getSelectedItem());
             String type = String.valueOf(jComboBox2.getSelectedItem());
+            String email = jTextField2.getText();
 
             if (firstName.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please enter your first name", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -360,12 +370,14 @@ public class EmployeeRegistration extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please select a type", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
 
-                ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE  `nic` = '" + nic + "' OR `mobile`='" + mobile + "'");
+                ResultSet resultSet = MySQL2.executeSearch("SELECT * FROM `employee` WHERE `nic` = '" + nic + "' OR `mobile`='" + mobile + "'");
+
                 boolean canUpdate = false;
+
                 if (resultSet.next()) {
 
                     if (!resultSet.getString("email").equals(email)) {
-                        JOptionPane.showMessageDialog(this, "This Mobile Number or NIC Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "This Mobile number or NIC already used", "Warning", JOptionPane.WARNING_MESSAGE);
                     } else {
                         canUpdate = true;
                     }
@@ -376,11 +388,13 @@ public class EmployeeRegistration extends javax.swing.JFrame {
 
                 if (canUpdate) {
 
-                    MySQL2.executeIUD("UPDATE `employee` SET `password` = '" + password + "' , `first_name`= '" + firstName + "', `last_name` = '" + lastName + "', "
-                            + " `nic` = '" + nic + "', `mobile` = '" + mobile + "' ,"
-                            + " `employee_type_id` = '" + employeeTypeMap.get(type) + "' , `gender_id` = '" + employeeGenderMap.get(gender) + "' "
-                            + "WHERE `email` = '" + email + "' ");
+                    MySQL2.executeIUD("UPDATE `employee` SET `password` = '" + password + "', `first_name`='" + firstName + "', `last_name` = '" + lastName + "',"
+                            + "`nic`='" + nic + "', `mobile`= '" + mobile + "',"
+                            + "`employee_type_id` = '" + employeeTypeMap.get(type) + "',`gender_id` = '" + employeeGenderMap.get(gender) + "'"
+                            + "WHERE `email` = '" + email + "'");
 
+                    loadEmployees();
+                    reset();
                 }
 
             }
@@ -388,8 +402,6 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -457,6 +469,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         jTextField2.setEditable(true);
+        jTable1.clearSelection();
         reset();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -488,17 +501,15 @@ public class EmployeeRegistration extends javax.swing.JFrame {
 
         String type = String.valueOf(jTable1.getValueAt(row, 7));
         jComboBox2.setSelectedItem(type);
-        
-        
+
         if (evt.getClickCount() == 2) {
-            
-            
+
             int row1 = jTable1.getSelectedRow();
             String email1 = String.valueOf(jTable1.getValueAt(row1, 0));
-            
-            
+
             AddressView addressView = new AddressView(email1);
             addressView.setVisible(true);
+
         }
 
     }//GEN-LAST:event_jTable1MouseClicked
